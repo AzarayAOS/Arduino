@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/main.css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/redactor_text.css">
+	<link href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/prettify.css">
+	<script type="text/javascript" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/jquery.min.js.Без названия"></script><script type="text/javascript" async="" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/widget.js.Без названия"></script><script type="text/javascript" async="" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/widget.js(1).Без названия"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/index.css"></head>
+<body>
+<div id="top_main_menu">
+		<ul>
+			<li><a href="http://iarduino.ru/">Магазин</a></li>
+			<li><a href="http://iarduino.ru/file/">Библиотеки</a></li>
+			<li><a href="https://lesson.iarduino.ru/">Уроки</a></li>
+			<li id="top_main_menu_activ"><a href="https://wiki.iarduino.ru/"><i class="fa fa-microchip" aria-hidden="true"></i> WiKi</a></li>
+			<li><a href="http://www.youtube.com/channel/UCRfNkq8F8rxmDa3sPoEQv1w" target="_blank">Видео</a></li>
+		</ul>
+		<div style="clear:both"></div>
+</div>	
+
+<div id="div_h1">
+	<h1>Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль)</h1>
+	<div id="link_adres"><a href="https://wiki.iarduino.ru/">Справочник</a> / <a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#">Trema - модули</a></div>
+</div>
+
+<div style="clear:both;"></div><main>
+  <article id="article">
+<div id="prev_wiki">
+	<div class="left">
+     <img class="img_prev_grup" id="img_prev1" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/609.svg" alert="Цифровой датчик температуры и влажности (Trema-модуль)" title="Цифровой датчик температуры и влажности (Trema-модуль)" style="display: inline-block;"> <img class="img_prev_grup" id="img_prev2" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/619.svg" alert="Цифровой датчик температуры и влажности высокой точности (Trema-модуль)" title="Цифровой датчик температуры и влажности высокой точности (Trema-модуль)" style="display: none;">	</div>
+	<div class="right">	
+  	<div class="title">Исходники изображение:</div>
+		<div class="wiki_linl_block"><i class="fa fa-file-image-o" style="color: #1e789b;"></i> <a href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/609.svg" target="_blank">SVG</a>, <a href="https://wiki.iarduino.ru/img/resources/609/609_1000.png" alert="Цифровой датчик температуры и влажности (Trema-модуль)" title="Цифровой датчик температуры и влажности (Trema-модуль)" target="_blank">PNG (1000px)</a>, <a href="https://wiki.iarduino.ru/img/resources/609/609_5000.png" alert="Цифровой датчик температуры и влажности (Trema-модуль)" title="Цифровой датчик температуры и влажности (Trema-модуль)" target="_blank">PNG (5000px)</a>,  <span> — id:609</span></div> <div class="wiki_linl_block"><i class="fa fa-file-image-o" style="color: #1e789b;"></i> <a href="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/619.svg" target="_blank">SVG</a>, <a href="https://wiki.iarduino.ru/img/resources/619/619_1000.png" alert="Цифровой датчик температуры и влажности высокой точности (Trema-модуль)" title="Цифровой датчик температуры и влажности высокой точности (Trema-модуль)" target="_blank">PNG (1000px)</a>, <a href="https://wiki.iarduino.ru/img/resources/619/619_5000.png" alert="Цифровой датчик температуры и влажности высокой точности (Trema-модуль)" title="Цифровой датчик температуры и влажности высокой точности (Trema-модуль)" target="_blank">PNG (5000px)</a>,  <span> — id:619</span></div> 
+       <div class="title">Библиотеки:</div><div class="wiki_linl_block"><i class="fa fa-file-code-o" aria-hidden="true" style="color: #1e789b;"></i> <a href="https://iarduino.ru/file/225.html" target="_blank">iarduino_DHT</a><br></div> 
+    <div class="wiki-shop-link-button">
+         <span class="button" onclick="$(&#39;#wiki-shop-link&#39;).toggle();$(&#39;#fa-level-downXzA2&#39;).toggle();$(&#39;#fa-level-downXzA1&#39;).toggle();">Перейти в магазин <i class="fa fa-times" style="display: none;" id="fa-level-downXzA2" aria-hidden="true"></i><i class="fa fa-level-down" id="fa-level-downXzA1" aria-hidden="true"></i></span>    </div>
+    <div id="wiki-shop-link" style="display: none;">
+        
+      <div class="item">
+        <a href="https://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-trema-modul.html">
+          <div class="img"><img id="img_prev" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/609.svg"></div>
+          <div class="name">Цифровой датчик температуры и влажности (Trema-модуль)</div>
+        </a>
+      </div>
+      
+      <div class="item">
+        <a href="https://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-vysokoy-tochnosti-trema-modul.html">
+          <div class="img"><img id="img_prev" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/619.svg"></div>
+          <div class="name">Цифровой датчик температуры и влажности высокой точности (Trema-модуль)</div>
+        </a>
+      </div>
+          </div>
+  </div>
+</div>
+ 
+
+
+
+<div id="content" class="redactor-styles">
+    <p>В линейке <a href="http://iarduino.ru/shop/Expansion-payments/Trema/" target="_blank">trema-модулей</a> есть три датчика температуры и влажности:</p>
+<ul>
+	<li><a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-trema-modul.html" target="_blank">Цифровой датчик температуры и влажности DHT11</a>.<a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-trema-modul.html"></a></li>
+	<li><a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-vysokoy-tochnosti-trema-modul.html" target="_blank">Цифровой датчик температуры и влажности высокой точности DHT22</a>.</li>
+	<li><a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-i2c-trema-modul.html" target="_blank">Цифровой датчик температуры и влажности AM2320 - I2C</a>.</li>
+</ul>
+<p><span class="redactor-invisible-space" style="line-height: 1.6em; background-color: initial;"></span>
+</p>
+<p><span class="redactor-invisible-space"><span class="redactor-invisible-space"><span class="redactor-invisible-space"></span></span></span>
+</p>
+<p>В этой статье, рассматриваются датчики DHT. С информацией о датчике <a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-i2c-trema-modul.html" target="_blank">AM2320</a> можно ознакомиться в разделе <a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti-i2c-trema-modul/" target="_blank">Wiki - AM2320</a>.
+</p>
+<h2 id="h3_0">Общие сведения:</h2>
+<p>Модули&nbsp;построены на базе сенсоров <a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-trema-modul.html">DHT11</a> и <a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-vysokoy-tochnosti-trema-modul.html">DHT22</a>, точность показаний последнего значительно выше первого.
+</p>
+<h2 id="h3_1">Видео:</h2>
+<figure data-widget-code="%3Ccenter%3E%3Ciframe%20width=%22560%22%20height=%22315%22%20src=%22https://www.youtube.com/embed/obZPoANJ1Lg?rel=0&amp;showinfo=0%22%20frameborder=%220%22%20allow=%22autoplay;%20encrypted-media%22%20allowfullscreen%3E%3C/iframe%3E%3C/center%3E" style="margin: 0px 0px 1em; padding: 0px; border: 0px; outline: none !important; position: relative; box-sizing: inherit; color: rgb(17, 17, 17); font-family: sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: justify; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;"><center><iframe width="560" height="315" src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/obZPoANJ1Lg.html" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="" style="margin: 0px; padding: 0px; border: 0px; outline: none !important; box-sizing: inherit; max-width: 90vw; max-height: 50.625vw;"></iframe></center></figure>
+<h2 id="h3_2">Спецификация:</h2>
+<table>
+<thead>
+<tr>
+	<th>Параметры
+	</th>
+	<th>DHT11
+	</th>
+	<th>DHT22
+	</th>
+	<th>Единицы
+	</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Питание
+	</td>
+	<td>3,3 ... 5
+	</td>
+	<td>3,3 ... 5
+	</td>
+	<td>В
+	</td>
+</tr>
+<tr>
+	<td>Потребляемый ток
+	</td>
+	<td>100
+	</td>
+	<td>50
+	</td>
+	<td>мкА
+	</td>
+</tr>
+<tr>
+	<td>Потребляемый ток
+	</td>
+	<td>2,5
+	</td>
+	<td>1,5
+	</td>
+	<td>мА
+	</td>
+</tr>
+<tr>
+	<td>Диапазон измеряемых температур
+	</td>
+	<td>0 ... 50
+	</td>
+	<td>-40 ... 80
+	</td>
+	<td>°C
+	</td>
+</tr>
+<tr>
+	<td>Максимальная погрешность
+	</td>
+	<td>±2
+	</td>
+	<td>±1
+	</td>
+	<td>°C
+	</td>
+</tr>
+<tr>
+	<td>Разрешение
+	</td>
+	<td>1,0
+	</td>
+	<td>0,1
+	</td>
+	<td>°C
+	</td>
+</tr>
+<tr>
+	<td>Диапазон измеряемой влажности
+	</td>
+	<td>20 ... 90
+	</td>
+	<td>0 ... 99,9
+	</td>
+	<td>%RH
+	</td>
+</tr>
+<tr>
+	<td>Максимальная погрешность
+	</td>
+	<td>±4
+	</td>
+	<td>±5
+	</td>
+	<td>%RH
+	</td>
+</tr>
+<tr>
+	<td>Разрешение
+	</td>
+	<td>1,0
+	</td>
+	<td>0,1
+	</td>
+	<td>%RH
+	</td>
+</tr>
+<tr>
+	<td>Минимальное время между опросами
+	</td>
+	<td>2
+	</td>
+	<td>2
+	</td>
+	<td>сек.
+	</td>
+</tr>
+<tr>
+	<td>Габариты
+	</td>
+	<td>30x30
+	</td>
+	<td>30x30
+	</td>
+	<td>мм
+	</td>
+</tr>
+<tr>
+	<td>Вес
+	</td>
+	<td>4
+	</td>
+	<td>4
+	</td>
+	<td>гр.
+	</td>
+</tr>
+</tbody>
+</table>
+<p>Все модули линейки "Trema" выполнены в одном формате</p>
+<figure style="margin: 0px 0px 1em; padding: 0px; border: 0px; outline: none !important; position: relative; box-sizing: inherit; clear: both; color: rgb(17, 17, 17); font-family: sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; text-align: center; background-color: rgb(255, 255, 255);"><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/trema_form_5pin.svg" data-image="0kru4k835y2q" width="470" height="200" style="margin: 0px; padding: 0px; border: 0px; outline: none !important; box-sizing: inherit; max-width: 100%; height: 200px; vertical-align: middle; width: 470px;"></figure>
+<h2 id="h3_3">Подключение:</h2>
+<p>К одной плате&nbsp;<a href="http://iarduino.ru/shop/arduino/" target="_blank">Arduino</a>&nbsp;можно подключить несколько модулей, как к цифровым, так и к аналоговым выводам. На одном выводе может находиться только один модуль.</p>
+<p>В комплекте имеется кабель для быстрого и удобного подключения к&nbsp;<a href="http://iarduino.ru/shop/Expansion-payments/trema-shield.html" target="_blank">Trema Shield</a><a href="http://iarduino.ru/shop/Expansion-payments/trema-shield.html"></a>.&nbsp;</p>
+<p>Модуль удобно подключать 3 способами, в зависимости от ситуации:</p>
+<h3><strong>Способ -&nbsp;1&nbsp;:&nbsp;</strong>&nbsp;Используя&nbsp;проводной шлейф и Piranha UNO</h3>
+<p>Используя провода&nbsp;«<a href="http://iarduino.ru/shop/Provoda-kabeli/nabor-provodov-papa-mama-20sm.html">Папа — Мама</a>», подключаем&nbsp; напрямую к контроллеру Piranha UNO<br></p>
+<figure><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/ca494b546d2c7ae7cb0c44433b109b74.png" data-image="bc5av63ufbz3"></figure>
+<h3><strong>Способ -&nbsp;2 :&nbsp; Используя&nbsp;Trema Set Shield</strong></h3>
+<p>Модуль можно подключить&nbsp;к любому из цифровых или&nbsp;аналоговых входов Trema Set Shield.</p>
+<figure><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/1cfe36cd179b412d5ed702438e9fbeaa.png" data-image="p019dj6lc81m"></figure>
+<h3><strong>Способ -&nbsp;3&nbsp;:&nbsp; Используя&nbsp;проводной шлейф и Shield</strong></h3>
+<p>Используя 3-х проводной шлейф, к&nbsp;&nbsp;Trema Shield,&nbsp;Trema-Power Shield,&nbsp;Motor Shield,&nbsp;Trema Shield NANO и тд.<br></p>
+<figure><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/3e0ca912cb6a2db775184a5743441f61.png" data-image="vl3colh37vsz"></figure>
+<h2 id="h3_4">Питание:</h2>
+<p><strong></strong>Входное напряжение питания от 3,3 до 5 В постоянного тока, подаётся на выводы Vcc (V) и GND (G).
+</p>
+<h2 id="h3_5">
+
+Подробнее о модулях:
+
+</h2>
+<p>Для работы с модулями, предлагаем воспользоваться библиотекой <a href="http://iarduino.ru/file/225.html" target="_blank">iarduino_DHT</a>.</p>
+<p>Подробнее про установку библиотеки читайте в нашей&nbsp;<a href="https://wiki.iarduino.ru/page/Installing_libraries/">инструкции</a>..</p>
+<h2 id="h3_6">Примеры:</h2>
+<h3>Получение данных от одного модуля DHT, подключённого к цифровому выводу 4.</h3>
+<pre class="prettyprint С prettyprinted" style=""><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iarduino_DHT.h&gt;</span><span class="pln"> </span><span class="com">// Подключаем библиотеку для работы с датчиком DHT</span><span class="pln">
+iarduino_DHT sensor</span><span class="pun">(</span><span class="lit">4</span><span class="pun">);</span><span class="pln">   </span><span class="com">// Объявляем объект, указывая номер вывода, к которому подключён модуль</span><span class="pln">
+                          </span><span class="com">// СКЕТЧ РАБОТАЕТ, КАК С МОДУЛЕМ DHT-11, ТАК И С МОДУЛЕМ DHT-22.</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> setup</span><span class="pun">(){</span><span class="pln">
+  </span><span class="typ">Serial</span><span class="pun">.</span><span class="kwd">begin</span><span class="pun">(</span><span class="lit">9600</span><span class="pun">);</span><span class="pln">     </span><span class="com">// Инициируем передачу данных в монитор последовательного порта, на скорости 9600 бод</span><span class="pln">
+  delay</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">            </span><span class="com">// Приостанавливаем выполнение скетча на 1 секунду, для перехода датчика в активное состояние</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> loop</span><span class="pun">(){</span><span class="pln">                 </span><span class="typ">Serial</span><span class="pun">.</span><span class="kwd">print</span><span class="pln">  </span><span class="pun">(</span><span class="str">"CEHCOP B KOMHATE: "</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">switch</span><span class="pun">(</span><span class="pln">sensor</span><span class="pun">.</span><span class="pln">read</span><span class="pun">()){</span><span class="pln">  </span><span class="com">// Читаем показания датчика</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_OK</span><span class="pun">:</span><span class="pln">             </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">((</span><span class="typ">String</span><span class="pun">)</span><span class="pln"> sensor</span><span class="pun">.</span><span class="pln">hum </span><span class="pun">+</span><span class="pln"> </span><span class="str">"% - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> sensor</span><span class="pun">.</span><span class="pln">tem </span><span class="pun">+</span><span class="pln"> </span><span class="str">"*C"</span><span class="pun">);</span><span class="pln"> </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_CHECKSUM</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"HE PABEHCTBO KC"</span><span class="pun">);</span><span class="pln">                                </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_DATA</span><span class="pun">:</span><span class="pln">     </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"OTBET HE COOTBETCTB. CEHCOPAM 'DHT'"</span><span class="pun">);</span><span class="pln">            </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_NO_REPLY</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"HET OTBETA"</span><span class="pun">);</span><span class="pln">                                     </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">                 </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"ERROR"</span><span class="pun">);</span><span class="pln">                                          </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln"> delay</span><span class="pun">(</span><span class="lit">2000</span><span class="pun">);</span><span class="pln">          </span><span class="com">// Приостанавливаем выполнение скетча на 2 секунды, между выводами показаний</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<h3>Результат работы скетча, для модуля DHT11:</h3>
+<figure><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/3adcea7941c4b97f3ec1dffe63be96a5.jpg" data-image="fmkycps3atba"></figure>
+<h3>Результат работы скетча, для модуля DHT22:</h3>
+<figure><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/a122bc36382af179491dd6a6223630e2.jpg" data-image="rx64b8bcknz5"></figure>
+<h3>Получение данных от двух модулей (подключённых к выводам 3 и 4):</h3>
+<pre class="prettyprint С prettyprinted" style=""><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iarduino_DHT.h&gt;</span><span class="pln"> </span><span class="com">// Подключаем библиотеку для работы с датчиком DHT</span><span class="pln">
+iarduino_DHT sensor1</span><span class="pun">(</span><span class="lit">3</span><span class="pun">);</span><span class="pln">  </span><span class="com">// Объявляем объект sensor1, указывая номер вывода, к которому подключён 1 модуль</span><span class="pln">
+iarduino_DHT sensor2</span><span class="pun">(</span><span class="lit">4</span><span class="pun">);</span><span class="pln">  </span><span class="com">// Объявляем объект sensor2, указывая номер вывода, к которому подключён 2 модуль</span><span class="pln">
+                          </span><span class="com">// МОЖНО ИСПОЛЬЗОВАТЬ КАК ОДИНАКОВЫЕ, ТАК И РАЗНЫЕ МОДУЛИ</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> setup</span><span class="pun">(){</span><span class="pln">
+  </span><span class="typ">Serial</span><span class="pun">.</span><span class="kwd">begin</span><span class="pun">(</span><span class="lit">9600</span><span class="pun">);</span><span class="pln">     </span><span class="com">// Инициируем передачу данных в монитор последовательного порта, на скорости 9600 бод</span><span class="pln">
+  delay</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">);</span><span class="pln">            </span><span class="com">// Приостанавливаем выполнение скетча на 1 секунду, для перехода датчика в активное состояние</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">void</span><span class="pln"> loop</span><span class="pun">(){</span><span class="pln">                 </span><span class="typ">Serial</span><span class="pun">.</span><span class="kwd">print</span><span class="pln">  </span><span class="pun">(</span><span class="str">"CEHCOP B KOMHATE: "</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">switch</span><span class="pun">(</span><span class="pln">sensor1</span><span class="pun">.</span><span class="pln">read</span><span class="pun">()){</span><span class="pln"> </span><span class="com">// Читаем показания 1 датчика</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_OK</span><span class="pun">:</span><span class="pln">             </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">((</span><span class="typ">String</span><span class="pun">)</span><span class="pln"> sensor1</span><span class="pun">.</span><span class="pln">hum </span><span class="pun">+</span><span class="pln"> </span><span class="str">"% - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> sensor1</span><span class="pun">.</span><span class="pln">tem </span><span class="pun">+</span><span class="pln"> </span><span class="str">"*C"</span><span class="pun">);</span><span class="pln"> </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_CHECKSUM</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"HE PABEHCTBO KC"</span><span class="pun">);</span><span class="pln">                                  </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_DATA</span><span class="pun">:</span><span class="pln">     </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"OTBET HE COOTBETCTB. CEHCOPAM 'DHT'"</span><span class="pun">);</span><span class="pln">              </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_NO_REPLY</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"HET OTBETA"</span><span class="pun">);</span><span class="pln">                                       </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">                 </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"ERROR"</span><span class="pun">);</span><span class="pln">                                            </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">                          </span><span class="typ">Serial</span><span class="pun">.</span><span class="kwd">print</span><span class="pln">  </span><span class="pun">(</span><span class="str">"CEHCOP HA KYXHE:  "</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">switch</span><span class="pun">(</span><span class="pln">sensor2</span><span class="pun">.</span><span class="pln">read</span><span class="pun">()){</span><span class="pln"> </span><span class="com">// Читаем показания 2 датчика</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_OK</span><span class="pun">:</span><span class="pln">             </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">((</span><span class="typ">String</span><span class="pun">)</span><span class="pln"> sensor2</span><span class="pun">.</span><span class="pln">hum </span><span class="pun">+</span><span class="pln"> </span><span class="str">"% - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> sensor2</span><span class="pun">.</span><span class="pln">tem </span><span class="pun">+</span><span class="pln"> </span><span class="str">"*C"</span><span class="pun">);</span><span class="pln"> </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_CHECKSUM</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"HE PABEHCTBO KC"</span><span class="pun">);</span><span class="pln">                                  </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_DATA</span><span class="pun">:</span><span class="pln">     </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"OTBET HE COOTBETCTB. CEHCOPAM 'DHT'"</span><span class="pun">);</span><span class="pln">              </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">case</span><span class="pln"> DHT_ERROR_NO_REPLY</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"HET OTBETA"</span><span class="pun">);</span><span class="pln">                                       </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">default</span><span class="pun">:</span><span class="pln">                 </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="str">"ERROR"</span><span class="pun">);</span><span class="pln">                                            </span><span class="kwd">break</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln"> delay</span><span class="pun">(</span><span class="lit">2000</span><span class="pun">);</span><span class="pln">          </span><span class="com">// Приостанавливаем выполнение скетча на 2 секунды, между выводами показаний</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<h3>Результат работы скетча:
+</h3>
+<figure><img src="./Цифровой датчик температуры и влажности DHT11, DHT22 (Trema-модуль) - Описания, примеры, подключение к Arduino_files/6859c2379d0fa9bb6b80900c2cea2722.jpg" data-image="3rxac2nzfwj6"></figure>
+<h2 id="h3_7">Описание основных функций библиотеки:</h2>
+<h3>Подключение библиотеки:
+</h3>
+<pre class="prettyprint С prettyprinted" style=""><span class="com">#include</span><span class="pln"> </span><span class="str">&lt;iarduino_DHT.h&gt;</span><span class="pln">          </span><span class="com">// Подключаем библиотеку</span><span class="pln">
+iarduino_DHT sensor</span><span class="pun">(</span><span class="pln"> </span><span class="pun">№</span><span class="pln">_</span><span class="pun">ВЫВОДА</span><span class="pln"> </span><span class="pun">);</span><span class="pln">   </span><span class="com">// Объявляем объект sensor, для работы с модулем, указывая номер вывода, к которому подключён модуль</span></pre>
+<h3>Функция <kbd>read();
+</kbd></h3>
+<ul>
+	<li>Назначение: Чтение показаний модуля</li>
+	<li>Синтаксис:<kbd> read();</kbd></li>
+	<li>Параметры: Нет</li>
+	<li>Возвращаемые значения:</li>
+	<li>Примечание: Если функция вернула значение <mark>DHT_OK</mark>, то корректные значения можно прочитать из переменных <kbd>hum</kbd> и <kbd>tem</kbd>.</li>
+	<li>Пример:</li>
+</ul>
+<pre class="prettyprint С prettyprinted" style=""><span class="kwd">if</span><span class="pun">(</span><span class="pln">sensor</span><span class="pun">.</span><span class="pln">read</span><span class="pun">()==</span><span class="pln">DHT_OK</span><span class="pun">){</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">sensor</span><span class="pun">.</span><span class="pln">hum</span><span class="pun">);</span><span class="pln"> </span><span class="typ">Serial</span><span class="pun">.</span><span class="pln">println</span><span class="pun">(</span><span class="pln">sensor</span><span class="pun">.</span><span class="pln">tem</span><span class="pun">);</span><span class="pln"> </span><span class="pun">}</span></pre>
+<p>Переменная <kbd>hum</kbd></p>
+<ul>
+	<li>Тип: float</li>
+	<li>Значение: Полученные показания влажности окружающей среды</li>
+</ul>
+<p>Переменная <kbd>tem</kbd></p>
+<ul>
+	<li>Тип: float</li>
+	<li>Значение: Полученные показания температуры окружающей среды</li></ul>
+<h2 id="h3_8">Применение:</h2>
+<ul><li><strong></strong>Метеостанции</li>
+	<li>Проекты климат-контроля</li>
+</ul>
+<h2 id="h3_9">Ссылки:</h2>
+<ul>
+	<li><a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-trema-modul.html" target="_blank">Цифровой датчик температуры и влажности DHT11 (Trema-модуль)</a>.<a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-trema-modul.html"></a></li>
+	<li><a href="http://iarduino.ru/shop/Sensory-Datchiki/cifrovoy-datchik-temperatury-i-vlazhnosti-vysokoy-tochnosti-trema-modul.html" target="_blank">Цифровой датчик температуры и влажности высокой точности DHT22 (Trema-модуль)</a>.</li>
+	<li><a href="http://iarduino.ru/file/225.html" target="_blank">Библиотека iarduino_DHT, для работы с датчиками DHT11 и DHT22</a>.</li>
+	<li><a href="https://wiki.iarduino.ru/page/Installing_libraries" target="_blank">Wiki - Установка библиотек в Arduino IDE</a>.</li>
+</ul>
+
+</div>
+ 
+
+
+
+
+
+
+</article>
+  <aside id="aside1" style="height: 355px; padding: 0px; border: 0px;"><div class="" style="background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0); background-blend-mode: normal; border: 0px none rgb(0, 0, 0); border-radius: 0px; border-collapse: separate; box-shadow: none; outline: rgb(0, 0, 0) none 0px; outline-offset: 0px; overflow-anchor: auto; overflow-wrap: normal; overflow: visible; padding: 0px; box-sizing: border-box; width: 260px;">
+
+
+    <nav class="nav_right">
+      <h3>Оглавление</h3>
+      <ul>
+      <li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_0" class="vidno">Общие сведения</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_1" class="vidno">Видео</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_2" class="">Спецификация</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_3" class="">Подключение</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_4" class="">Питание</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_5" class="">
+
+Подробнее о модулях:
+
+</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_6" class="">Примеры</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_7">Описание основных функций библиотеки</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_8">Применение</a></li><li><a href="https://wiki.iarduino.ru/page/cifrovoy-datchik-temperatury-i-vlazhnosti/#h3_9">Ссылки</a></li>      </ul>
+    </nav>
+    <div class="video">
+          </div>
+
+    
+    
+  </div></aside>
+  <div style="clear:both; padding-bottom:0.25em"></div>
+  <div class="commentarii">
+    <h2>Обсуждение</h2>
+        
+    <div id="hypercomments_widget"></div>
+    <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+    _hcwp.push({widget:"Stream", widget_id: 63201});
+    (function() {
+    if("HC_LOAD_INIT" in window)return;
+    HC_LOAD_INIT = true;
+    var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+    var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+    hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/63201/"+lang+"/widget.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+    </script>
+  </div>
+
+</main>
+
+
+
+
+	<footer>
+		<div class="max-width">
+			<div class="line">
+				<div><span class="TextWhite span1">Пишем</span><br><span class="span2">Описания, библиотеки, уроки...</span></div>
+				<div><span class="TextWhite span1">Разрабатываем</span><br><span class="span2">Наборы, контроллеры, модули...</span></div>
+				<div><span class="TextWhite span1">Производим</span><br><span class="span2">Производство в РОССИИ</span></div>
+			</div>
+			<div class="line">
+				<div><span class="TextWhite span1">Подпишись и питайся только свежими проектами</span>
+				<input type="text" placeholder="e-mail" class="input_mail" id="mail_input_podpiska" maxlength="128">
+				<button><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+			</div>
+			</div>
+			<br>
+			<br>
+			Документации, библиотеки, схемы подключения, готовые уроки и проекты для Arduino и Piranha (Пиранья)
+			<br>
+			<br>			<br>
+		</div>
+		
+
+
+
+	</footer>
+		<!--LiveInternet counter--><script type="text/javascript">new Image().src = "//counter.yadro.ru/hit?r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"" : ";s"+screen.width+"*"+screen.height+"*" + (screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u"+escape(document.URL) + ";h"+escape(document.title.substring(0,80)) + ";" +Math.random();</script><!--/LiveInternet--> 
+
+
+
+<script>
+(function(){
+var a = document.querySelector('#aside1'), b = null, P = 0;
+window.addEventListener('scroll', Ascroll, false);
+document.body.addEventListener('scroll', Ascroll, false);
+function Ascroll() {
+  if (b == null) {
+    var Sa = getComputedStyle(a, ''), s = '';
+    for (var i = 0; i < Sa.length; i++) {
+      if (Sa[i].indexOf('overflow') == 0 || Sa[i].indexOf('padding') == 0 || Sa[i].indexOf('border') == 0 || Sa[i].indexOf('outline') == 0 || Sa[i].indexOf('box-shadow') == 0 || Sa[i].indexOf('background') == 0) {
+        s += Sa[i] + ': ' +Sa.getPropertyValue(Sa[i]) + '; '
+      }
+    }
+    b = document.createElement('div');
+    b.style.cssText = s + ' box-sizing: border-box; width: ' + a.offsetWidth + 'px;';
+    a.insertBefore(b, a.firstChild);
+    var l = a.childNodes.length;
+    for (var i = 1; i < l; i++) {
+      b.appendChild(a.childNodes[1]);
+    }
+    a.style.height = b.getBoundingClientRect().height + 'px';
+    a.style.padding = '0';
+    a.style.border = '0';
+  }
+  var Ra = a.getBoundingClientRect(),
+      R = Math.round(Ra.top + b.getBoundingClientRect().height - document.querySelector('#article').getBoundingClientRect().bottom);  // селектор блока, при достижении нижнего края которого нужно открепить прилипающий элемент
+  if ((Ra.top - P) <= 0) {
+    if ((Ra.top - P) <= R) {
+      b.className = 'stop';
+      b.style.top = - R +'px';
+    } else {
+      b.className = 'sticky';
+      b.style.top = P + 'px';
+    }
+  } else {
+    b.className = '';
+    b.style.top = '';
+  }
+  window.addEventListener('resize', function() {
+    a.children[0].style.width = getComputedStyle(a, '').width
+  }, false);
+}
+})()
+</script>
+
+
+
+<script type="text/javascript">
+$("body").on('click', '[href*="#"]', function(e){
+  var fixed_offset = 100;
+  $('html,body').stop().animate({ scrollTop: $(this.hash).offset().top - fixed_offset }, 300);
+  $( e.currentTarget.hash ).fadeTo('slow', 0.2).fadeTo('slow', 1.0).fadeTo('slow', 0.2).fadeTo('slow', 1.0).fadeTo('slow', 0.2).fadeTo('slow', 1.0);
+  e.preventDefault();
+});
+
+
+
+
+// функция проверки полной видимости элемента
+function checkPosition( nameid){
+  if($("h2").is(nameid)) {
+
+    // координаты дива
+    var div_position = $(nameid).offset();
+    // отступ сверху
+    var div_top = div_position.top;
+    // отступ слева
+    var div_left = div_position.left;
+    // ширина
+    var div_width = $(nameid).width();
+    // высота
+    var div_height = $(nameid).height();
+     
+    // проскроллено сверху 
+    var top_scroll = $(document).scrollTop();
+    // проскроллено слева
+    var left_scroll = $(document).scrollLeft();
+    // ширина видимой страницы
+    var screen_width = $(window).width();
+    // высота видимой страницы
+    var screen_height = $(window).height();
+     
+    // координаты углов видимой области
+    var see_x1 = left_scroll;
+    var see_x2 = screen_width + left_scroll;
+    var see_y1 = top_scroll;
+    var see_y2 = screen_height + top_scroll;
+     
+    // координаты углов искомого элемента
+
+    
+    var div_x1 = div_left;
+    var div_y1 = div_top;
+    var div_x2 = div_left + div_width;
+    var div_y2 = div_top + div_height;
+     
+    // проверка - виден див полностью или нет
+    if( div_x1 >= see_x1 && div_x2 <= see_x2 && div_y1 >= see_y1 && div_y2 <= see_y2 ){
+        // если виден
+        $('a[href^=\''+nameid+'\']').addClass('vidno');
+    }else{
+        // если не виден
+        $('a[href^=\''+nameid+'\']').removeClass('vidno');
+    }
+
+  }
+
+}
+
+
+$(document).ready(function(){
+  var i_max=$('.img_prev_grup').length+1;
+  if(i_max>1){
+    baner_index(1);
+    $('.img_prev_grup:not(#img_prev1)').hide();
+    var timerId = setTimeout (baner_index, 2000); 
+  }
+  function baner_index(id){
+    if(id>0){i_t=id;}
+    for (i = 0; i < i_max; i++) {
+      if(i==i_t){
+        $('#img_prev'+i).show(0);
+        }else{
+        $('#img_prev'+i).hide(0);
+        }
+    }
+
+  i_t++;
+  if(i_t==i_max){i_t=1;}
+    clearTimeout(timerId);
+      timerId = setTimeout (baner_index, 4000);
+  }
+  $(document).scroll(function(){
+        // при скролле страницы делаем проверку
+        checkPosition('#h3_0');
+        checkPosition('#h3_1');
+        checkPosition('#h3_2');
+        checkPosition('#h3_3');
+        checkPosition('#h3_4');
+        checkPosition('#h3_5');
+        checkPosition('#h3_6');
+        checkPosition('#h3_7');
+        checkPosition('#h3_8');
+        checkPosition('#h3_9');
+        checkPosition('#h3_10');
+        checkPosition('#h3_11');
+        checkPosition('#h3_12');
+        checkPosition('#h3_13');
+    });
+     
+    // после загрузки страницы сразу проверяем
+    checkPosition('#h3_0');
+        checkPosition('#h3_1');
+        checkPosition('#h3_2');
+        checkPosition('#h3_3');
+        checkPosition('#h3_4');
+        checkPosition('#h3_5');
+        checkPosition('#h3_6');
+        checkPosition('#h3_7');
+        checkPosition('#h3_8');
+        checkPosition('#h3_9');
+        checkPosition('#h3_10');
+        checkPosition('#h3_11');
+        checkPosition('#h3_12');
+        checkPosition('#h3_13');
+     
+    // проверка при масштабировании и изменении размера страницы
+    $(window).resize(function(){
+      checkPosition('#h3_0');
+        checkPosition('#h3_1');
+        checkPosition('#h3_2');
+        checkPosition('#h3_3');
+        checkPosition('#h3_4');
+        checkPosition('#h3_5');
+        checkPosition('#h3_6');
+        checkPosition('#h3_7');
+        checkPosition('#h3_8');
+        checkPosition('#h3_9');
+        checkPosition('#h3_10');
+        checkPosition('#h3_11');
+        checkPosition('#h3_12');
+        checkPosition('#h3_13');
+    });
+     
+});
+</script></body></html>
