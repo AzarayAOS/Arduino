@@ -316,7 +316,7 @@ void setup(){                                          //
   DisplayCalculate.setInterval(3000);
   
   WriteToFile.onRun(WriteFile);
-  WriteToFile.setInterval(60000);
+  WriteToFile.setInterval(10000);
 
   //if((SD.exists("LOG.csv"))){;}
  // else
