@@ -234,14 +234,15 @@ newString=DataTime+" "+HumTem+" "+Temper;
     logFile.println(newString);
     logFile.close();
     Serial.println(newString);
+    countround++;
+    sum_time=0;
   } 
   else 
   {
     Serial.println("LOG.csv");
     Serial.println("Couldn't open log file");
   }
-  countround++;
-  sum_time=0;
+  
  }
  
  
