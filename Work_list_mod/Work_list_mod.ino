@@ -15,6 +15,7 @@ const byte DS3231 = 0x68; // I2C адрес таймера DS3231
 #include <SD.h> 
 
 
+int sum_time;       // переменная для временной задержки записи в файл
 
 float refresh_rate = 5000.0;
 int hex_to_dec(int hex)
@@ -88,7 +89,8 @@ void DisplTRest()
 
 
                    
-void setup(){                                          //
+void setup(){  
+    sum_time=100;
     myOLED.begin();                                    // Инициируем работу с дисплеем.
     myOLED.setFont(SmallFontRus);                      // Указываем шрифт который требуется использовать для вывода цифр и текста.
 //  myOLED.setCoding(TXT_UTF8);                        // Указываем кодировку текста в скетче. Если на дисплее не отображается Русский алфавит, то ...
@@ -219,7 +221,8 @@ newString=DataTime+" "+HumTem+" "+Temper;
   
   // Строка которую будем записывать на карту
  
- 
+ if(sum_time>=60)
+ {
  // Открываем файл и записываем строку
  // В одно время можно открывать только один файл
  // Если файла нет то он будет создан
@@ -238,8 +241,8 @@ newString=DataTime+" "+HumTem+" "+Temper;
     Serial.println("Couldn't open log file");
   }
   countround++;
-  
- 
+  sum_time=0;
+ }
  
  
   //
@@ -252,8 +255,8 @@ newString=DataTime+" "+HumTem+" "+Temper;
     myOLED.print( "Количество записей "  , 0, 6);    // Выводим текст по центру 6 строки.
     myOLED.print( countround  , 3, 7);    // Выводим текст по центру 7 строки.
     
-    delay(60000);                                       // Ждём 60 секунду.
+    delay(10000);                                       // Ждём 60 секунду.
    
-
+    sum_time=sum_time+10;
     
 }                                                     
