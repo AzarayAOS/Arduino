@@ -14,16 +14,12 @@ iarduino_DHT sensor(2);   // Объявляем объект, указывая �
 const byte DS3231 = 0x68; // I2C адрес таймера DS3231
 #include <SD.h> 
 
-bool flag;
+//bool flag;
 Thread DisplaySeen=Thread(); // создаём поток параллельного выполнения для отображения ан экран
 Thread DisplayCalculate=Thread(); // для подсчёта 
 Thread WriteToFile=Thread();    // запись в файл
 
-
-
-
-
-float refresh_rate = 5000.0;
+//float refresh_rate = 5000.0;
 int hex_to_dec(int hex)
 {
   int dec=0;
@@ -35,7 +31,7 @@ return dec;
 //String StrTime="";
 //int countround=0;     // количество записей
 
- bool flagThread=false;
+ //bool flagThread=false;
  String newString="";
   String HumTem="HT";
   String Hum="T";
