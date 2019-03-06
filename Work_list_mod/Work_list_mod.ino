@@ -116,19 +116,22 @@ void setup(){
   }
   Serial.println("Card Ready");
 
-  //if((SD.exists("LOG.csv"))){;}
- // else
+  // прверяем, есть ли иакой файл
+  if(!SD.exists("LOG.csv"))
   {
-  File logFile = SD.open("LOG.csv", FILE_WRITE);
+    File logFile = SD.open("LOG.csv", FILE_WRITE);
  
- if (logFile) {
- logFile.println("Date/Time Humidity temperature IR_sensor");
- logFile.close();
- Serial.println("Date/Time Humidity temperature IR_sensor");
- } else {
- Serial.println("LOG.csv");
- Serial.println("Couldn't open log file");
- }
+    if (logFile) 
+    {
+      logFile.println("Date/Time Humidity temperature IR_sensor");
+      logFile.close();
+      Serial.println("Date/Time Humidity temperature IR_sensor");
+    } 
+    else 
+    {
+      Serial.println("LOG.csv");
+      Serial.println("Couldn't open log file");
+    }
   }
 
   i2c_init(); //Initialise the i2c bus
