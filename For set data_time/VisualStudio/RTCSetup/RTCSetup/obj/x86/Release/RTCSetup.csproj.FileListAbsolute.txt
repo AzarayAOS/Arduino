@@ -1,0 +1,1 @@
+D:\Git\Arduino\For set data_time\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.csprojAssemblyReference.cache
