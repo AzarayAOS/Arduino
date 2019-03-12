@@ -17,7 +17,7 @@ DHT dht(DHTPIN, DHTTYPE);                      // Инициализируем �
 #include <i2cmaster.h>
 #include <Wire.h>
 const byte DS3231 = 0x68; // I2C адрес таймера DS3231
-float bias_step;    // смещение для датчиков
+
 #include <SD.h> 
 
 
@@ -93,10 +93,28 @@ void DisplTRest()
     delay(5000);                                       // Ждём 10 секунды.
   
 }
+
+// првоерка наличия файла
+bool SD_Exists(String file)
+{
+  Serial.println(file);
+  File f = SD.open(file.c_str(), FILE_READ);
+
+    if(f)
+    {
+        bool b = f.available();
+        f.close();
+        return b;
+    }
+return false;
+}
+
+
+
 //==============START================              
 void setup(){  
     sum_time=100;
-    bias_step=0;// 3,97448275862069;
+    
     myOLED.begin();                                    // Инициируем работу с дисплеем.
     myOLED.setFont(SmallFontRus);                      // Указываем шрифт который требуется использовать для вывода цифр и текста.
 //  myOLED.setCoding(TXT_UTF8);                        // Указываем кодировку текста в скетче. Если на дисплее не отображается Русский алфавит, то ...
@@ -120,9 +138,9 @@ void setup(){
   }
   Serial.println("Card Ready");
 
-  /*
+  
     // прверяем, есть ли иакой файл
-  if(!SD.exists("LOG.csv"))
+  if(!SD_Exists("LOG.csv"))
   {
     File logFile = SD.open("LOG.csv", FILE_WRITE);
  
@@ -138,7 +156,7 @@ void setup(){
       Serial.println("Couldn't open log file");
     }
   }
-    */
+    
   i2c_init(); //Initialise the i2c bus
   PORTC = (1 << PORTC4) | (1 << PORTC5);//enable pullups
   delay(3000);            // Приостанавливаем выполнение скетча на 1 секунду, для перехода датчика в активное состояние
@@ -184,7 +202,7 @@ void loop(){
       return;                                  
     }
   // Compute heat index in Celsius (isFahreheit = false)
-  float hic = dht.computeHeatIndex(tm, h, false)+bias_step;
+  float hic = dht.computeHeatIndex(tm, h, false);
  //Serial.println("h: "+(String)h+" tm: "+(String)tm+" hic: "+(String)hic);
  HumTem=(String)h+" "+(String)hic;
  Hum=(String)h;
@@ -257,7 +275,7 @@ newString=DataTime+" "+HumTem+" "+Temper;
  // Если файла нет то он будет создан
 
 
-  if(!SD.exists(FileName+".csv"))
+  if(!SD_Exists(FileName+".csv"))
   {
     File logFile=SD.open(FileName+".csv", FILE_WRITE);
     {
