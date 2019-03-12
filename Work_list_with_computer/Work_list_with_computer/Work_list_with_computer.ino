@@ -21,6 +21,68 @@ int CS_pin = 10;
 int pow_pin = 8; // Если вы используете SD Shield  
 
 
+ //===== ТЕМПЕРАТУРА И ВЛАЖНОСТЬ ===========
+// функция получени температуры и влажности с датчика DHT11/22
+String DHT_Get()
+{
+  String HumTem="";
+  
+  float h,tm;
+  h = dht.readHumidity();                 // Считывание влажности в процентах
+  tm = dht.readTemperature();              // Считывание температуры в градусах цельсия
+
+  //Serial.println("h: "+(String)h+" tm: "+(String)tm);
+  if (isnan(h) || isnan(tm))                     // Проверяем, получилось считать данные 
+    {
+      Serial.println("Read error DHT22");    // Выводим текст
+      return;                                  
+    }
+  // Вычислить тепловой индекс в градусах Цельсия (isFahreheit = false)
+  float hic = dht.computeHeatIndex(tm, h, false);
+  Serial.println("h: "+(String)h+" tm: "+(String)tm+" hic: "+(String)hic);
+  HumTem=(String)h+" "+(String)h;
+
+
+  return HumTem;
+}
+
+//========= ДАтчик с ИК метра ==========
+// функция получени температуры с датчика ИК-датчика
+double IR_Get()
+{
+
+  int dev = 0x5A<<1;
+  int data_low = 0;
+  int data_high = 0;
+  int pec = 0;
+ 
+  i2c_start_wait(dev+I2C_WRITE);
+  i2c_write(0x07);
+ 
+  // читать
+  i2c_rep_start(dev+I2C_READ);
+  data_low = i2c_readAck(); //Прочитайте 1 байт, а затем отправьте подтверждение
+  data_high = i2c_readAck(); //Прочитайте 1 байт, а затем отправьте подтверждение
+  pec = i2c_readNak();
+  i2c_stop();
+ 
+  //Это преобразовывает старший и младший байты вместе и обрабатывает температуру, MSB - бит ошибки и игнорируется для временных
+  double tempFactor = 0.02; // 0,02 градуса на LSB (разрешение измерения MLX90614)
+  double tempData = 0x0000; // обнулять данные
+  int frac; // данные после десятичной точки
+ 
+  // Это маскирует бит ошибки старшего байта, затем перемещает его влево на 8 бит и добавляет младший байт.
+  tempData = (double)(((data_high & 0x007F) << 8) + data_low);
+  tempData = (tempData * tempFactor)-0.01;
+ 
+  float celcius = tempData - 273.15;
+ 
+  Serial.print("Celcius: ");
+  Serial.println(celcius);
+
+  return celcius;
+}
+
 //==============START================  
 void setup() 
 {
@@ -47,67 +109,14 @@ void setup()
 
 void loop() 
 {
-
-  String newString="";
   String HumTem="";
-  String Hum="";
-  String Tem="";
   String Temper="";
-
-  //===== ТЕМПЕРАТУРА И ВЛАЖНОСТЬ ===========
-
-
-
-  float h,tm;
-  h = dht.readHumidity();                 // Считывание влажности в процентах
-  tm = dht.readTemperature();              // Считывание температуры в градусах цельсия
-
-  //Serial.println("h: "+(String)h+" tm: "+(String)tm);
-  if (isnan(h) || isnan(tm))                     // Проверяем, получилось считать данные 
-    {
-      Serial.println("Read error DHT22");    // Выводим текст
-      return;                                  
-    }
-  // Compute heat index in Celsius (isFahreheit = false)
-  float hic = dht.computeHeatIndex(tm, h, false);
-  Serial.println("h: "+(String)h+" tm: "+(String)tm+" hic: "+(String)hic);
-  HumTem=(String)h+" "+(String)hic;
-  Hum=(String)h;
-  Tem=(String)hic;
-
+ 
+  HumTem=DHT_Get();
   
-  //========= ДАтчик с ИК метра ==========
+  Temper=(String)IR_Get();
 
 
-  int dev = 0x5A<<1;
-  int data_low = 0;
-  int data_high = 0;
-  int pec = 0;
- 
-  i2c_start_wait(dev+I2C_WRITE);
-  i2c_write(0x07);
- 
-  // read
-  i2c_rep_start(dev+I2C_READ);
-  data_low = i2c_readAck(); //Read 1 byte and then send ack
-  data_high = i2c_readAck(); //Read 1 byte and then send ack
-  pec = i2c_readNak();
-  i2c_stop();
- 
-  //This converts high and low bytes together and processes temperature, MSB is a error bit and is ignored for temps
-  double tempFactor = 0.02; // 0.02 degrees per LSB (measurement resolution of the MLX90614)
-  double tempData = 0x0000; // zero out the data
-  int frac; // data past the decimal point
- 
-  // This masks off the error bit of the high byte, then moves it left 8 bits and adds the low byte.
-  tempData = (double)(((data_high & 0x007F) << 8) + data_low);
-  tempData = (tempData * tempFactor)-0.01;
- 
-  float celcius = tempData - 273.15;
- 
-  Serial.print("Celcius: ");
-  Serial.println(celcius);
-  Temper=celcius;
 
   delay(5000);                                       // Ждём 5 секунду.
 }
