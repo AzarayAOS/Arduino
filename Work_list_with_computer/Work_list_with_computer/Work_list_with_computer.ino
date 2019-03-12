@@ -1,6 +1,4 @@
-//#include <iarduino_DHT.h> // Подключаем библиотеку для работы с датчиком DHT
-//iarduino_DHT sensor(2);   // Объявляем объект, указывая номер вывода, к которому подключён модуль
-                            // СКЕТЧ РАБОТАЕТ, КАК С МОДУЛЕМ DHT-11, ТАК И С МОДУЛЕМ DHT-22.
+
 
 #include <DHT.h>            // другая библиотека для работы с датчиком DHT11 и DHT22
 #include <DHT_U.h>          // в которой автоматически выбирается подключенный датчик 
@@ -8,12 +6,21 @@
 
 #include <i2cmaster.h>
 
+// 
+#define BUFFER_SIZE 20      // размеры буфера для связи с ПС
+#define VERSION     "2.0"   // версия подпрограммы Arduino
 
 #define DHTPIN 2                               // Пин к которому подключен датчик
 #define DHTTYPE DHT22                          // Используемый датчик DHT 22 (AM2302), AM2321
 DHT dht(DHTPIN, DHTTYPE);                      // Инициализируем датчик
 
 const byte DS3231 = 0x68; // I2C адрес таймера DS3231
+
+
+
+//Буфер для получения информации с ПС
+char serial_buffer[BUFFER_SIZE];
+int buffer_position;
 
 
 // Назначаем пины
@@ -34,13 +41,13 @@ String DHT_Get()
   //Serial.println("h: "+(String)h+" tm: "+(String)tm);
   if (isnan(h) || isnan(tm))                     // Проверяем, получилось считать данные 
     {
-      Serial.println("Read error DHT22");    // Выводим текст
+      //Serial.println("Read error DHT22");    // Выводим текст
       return;                                  
     }
   // Вычислить тепловой индекс в градусах Цельсия (isFahreheit = false)
   float hic = dht.computeHeatIndex(tm, h, false);
-  Serial.println("h: "+(String)h+" tm: "+(String)tm+" hic: "+(String)hic);
-  HumTem=(String)h+" "+(String)h;
+  //Serial.println("h: "+(String)h+" tm: "+(String)tm+" hic: "+(String)hic);
+  HumTem=(String)h+" "+(String)tm;
 
 
   return HumTem;
@@ -77,8 +84,8 @@ double IR_Get()
  
   float celcius = tempData - 273.15;
  
-  Serial.print("Celcius: ");
-  Serial.println(celcius);
+  //Serial.print("Celcius: ");
+  //Serial.println(celcius);
 
   return celcius;
 }
@@ -100,23 +107,24 @@ void setup()
     digitalWrite(pow_pin, HIGH);
 
 
-  i2c_init(); //Initialise the i2c bus
+  i2c_init(); //Инициализация шины i2c
   PORTC = (1 << PORTC4) | (1 << PORTC5);//enable pullups
   delay(3000);            // Приостанавливаем выполнение скетча на 3 секунду, для перехода датчика в активное состояние
 
- 
+  buffer_position = 0;
 }
 
 void loop() 
 {
-  String HumTem="";
-  String Temper="";
- 
-  HumTem=DHT_Get();
+  //String HumTem="";
+  //String Temper="";
+  //String RtStr="";
+  //HumTem=DHT_Get();
   
-  Temper=(String)IR_Get();
+  //Temper=(String)IR_Get();
 
-
-
+  //RtStr=HumTem+" "+Temper;
+  
+  Serial.println(DHT_Get()+" "+(String)IR_Get());
   delay(5000);                                       // Ждём 5 секунду.
 }
