@@ -8,6 +8,3 @@ C:\Users\dentellaluca\Git\RTCSetup\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\
 C:\Users\dentellaluca\Git\RTCSetup\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.pdb
 C:\Users\dentellaluca\Git\RTCSetup\VisualStudio\RTCSetup\RTCSetup\bin\Debug\RTCSetup.exe.config
 C:\Users\dentellaluca\Git\RTCSetup\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.Form1.resources
-D:\Git\Arduino\For set data_time\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.csprojAssemblyReference.cache
-D:\Git\Arduino\For set data_time\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.exe
-D:\Git\Arduino\For set data_time\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.pdb
