@@ -1,1 +1,6 @@
 D:\Git\Arduino\For set data_time\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.csprojAssemblyReference.cache
+D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.csprojAssemblyReference.cache
+D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.Form1.resources
+D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.Properties.Resources.resources
+D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.csproj.GenerateResource.cache
+D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Release\RTCSetup.csproj.CoreCompileInputs.cache

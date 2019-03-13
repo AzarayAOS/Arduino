@@ -1,12 +1,8 @@
-
-
 #include <DHT.h>            // другая библиотека для работы с датчиком DHT11 и DHT22
 #include <DHT_U.h>          // в которой автоматически выбирается подключенный датчик 
                             // и коректно вычисляются температура и влажность
-
 #include <i2cmaster.h>
 
-// 
 #define BUFFER_SIZE 20      // размеры буфера для связи с ПС
 #define VERSION     "2.0"   // версия подпрограммы Arduino
 
@@ -17,18 +13,15 @@ DHT dht(DHTPIN, DHTTYPE);                      // Инициализируем �
 const byte DS3231 = 0x68; // I2C адрес таймера DS3231
 
 
+// Назначаем пины
+int CS_pin = 10;
+int pow_pin = 8; // Если вы используете SD Shield
 
-//Буфер для получения информации с ПС
+// Буфер для входящих данных
 char serial_buffer[BUFFER_SIZE];
 int buffer_position;
 
-
-// Назначаем пины
-int CS_pin = 10;
-int pow_pin = 8; // Если вы используете SD Shield  
-
-
- //===== ТЕМПЕРАТУРА И ВЛАЖНОСТЬ ===========
+//===== ТЕМПЕРАТУРА И ВЛАЖНОСТЬ ===========
 // функция получени температуры и влажности с датчика DHT11/22
 String DHT_Get()
 {
@@ -48,8 +41,6 @@ String DHT_Get()
   float hic = dht.computeHeatIndex(tm, h, false);
   //Serial.println("h: "+(String)h+" tm: "+(String)tm+" hic: "+(String)hic);
   HumTem=(String)h+" "+(String)tm;
-
-
   return HumTem;
 }
 
@@ -91,40 +82,87 @@ double IR_Get()
 }
 
 //==============START================  
-void setup() 
-{
-    Serial.begin(9600);     // Инициируем передачу данных в монитор последовательного порта, на скорости 9600 бод
-    dht.begin(); 
 
-    
-    
-    //Назначаем пин CS_pin выходом
+void setup() {
+  
+  Serial.begin(57600);
+
+  buffer_position = 0;
+
+//Назначаем пин CS_pin выходом
     pinMode(CS_pin, OUTPUT);
-
-
     //Если мы используем шилд то назначаем выходом пин для питания шилда
     pinMode(pow_pin, OUTPUT);  
     digitalWrite(pow_pin, HIGH);
-
-
   i2c_init(); //Инициализация шины i2c
   PORTC = (1 << PORTC4) | (1 << PORTC5);//enable pullups
-  delay(3000);            // Приостанавливаем выполнение скетча на 3 секунду, для перехода датчика в активное состояние
-
-  buffer_position = 0;
+  delay(3000);            // Приостанавливаем выполнение скетча на 3 секунду, для перехода датчика в активное состояние 
 }
 
-void loop() 
-{
-  //String HumTem="";
-  //String Temper="";
-  //String RtStr="";
-  //HumTem=DHT_Get();
+void loop() {
   
-  //Temper=(String)IR_Get();
+  // Ожидание поступающих данных по последовательному порту
+  if (Serial.available() > 0) {
+    
+    // Читаем входящий символ
+    char incoming_char = Serial.read();
+    
+    // Конец линии?
+    if(incoming_char == '\n') {
+      
+      // Разбор команды
+      
+      // ## 
+      if(serial_buffer[0] == '#' && serial_buffer[1] == '#')
+        Serial.println("!!");
+        
+      // ?V
+      else if(serial_buffer[0] == '?' && serial_buffer[1] == 'V')
+        Serial.println(VERSION);
 
-  //RtStr=HumTem+" "+Temper;
-  
-  Serial.println(DHT_Get()+" "+(String)IR_Get());
-  delay(5000);                                       // Ждём 5 секунду.
+      // ?T 
+      else if(serial_buffer[0] == '?' && serial_buffer[1] == 'T') {        
+       /* DateTime now = RTC.now();
+        char time_string[20];
+        sprintf(time_string, "%02d/%02d/%d %02d:%02d:%02d", 
+          now.day(), now.month(), now.year(),
+          now.hour(), now.minute(), now.second());
+          Serial.println(time_string);*/
+      }
+
+      // !T 
+      else if(serial_buffer[0] == '!' && serial_buffer[1] == 'T') {
+
+        String time_string = String(serial_buffer);
+        /*int day = time_string.substring(2, 4).toInt();
+        int month = time_string.substring(4, 6).toInt();        
+        int year = time_string.substring(6, 10).toInt();
+        int hour = time_string.substring(10, 12).toInt();
+        int minute = time_string.substring(12, 14).toInt();
+        int second = time_string.substring(14, 16).toInt();
+        DateTime set_time = DateTime(year, month, day, hour, minute, second);
+        RTC.adjust(set_time);*/
+        Serial.println("OK");
+      }// ?D
+      else if(serial_buffer[0] == '?' && serial_buffer[1] == 'D')
+        Serial.println(DHT_Get()+" "+(String)IR_Get());
+      
+      // Сбросить буфер
+      buffer_position = 0;
+    }
+    
+    // возврат каретки, ничего не делать
+    else if(incoming_char == '\r');
+    
+    // Нормальный символ
+    else {
+      
+      // Буфер заполнен, нам нужно сбросить его
+      if(buffer_position == BUFFER_SIZE - 1) buffer_position = 0;
+
+      // Сохраняем символ в буфере и перемещаем индекс
+      serial_buffer[buffer_position] = incoming_char;
+      buffer_position++;      
+    }
+  }    
 }

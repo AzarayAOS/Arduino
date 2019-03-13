@@ -97,6 +97,32 @@ namespace RTCSetup
             return response;
         }
 
+
+
+
+        /// <summary>
+        /// Получить информацию с датчиков, команда ?D
+        /// </summary>
+        /// <returns>возвращает строку с ответом</returns>
+        public string getInfo()
+        {
+            serialPort.WriteLine("?D");
+            string response = "";
+
+            try
+            {
+                response = serialPort.ReadLine();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No data from serial port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "UNKNOWN";
+            }
+
+            
+            return response;
+        }
+
         // Установка даты и времени RTC
         // команда:! TddMMyyyyhhmmss
         // ответ: ОК

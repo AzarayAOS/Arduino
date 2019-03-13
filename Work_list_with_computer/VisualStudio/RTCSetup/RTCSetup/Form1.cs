@@ -19,6 +19,15 @@ namespace RTCSetup
         private SerialManager serialManager = new SerialManager();
         private bool connected = false;
         private string sketchVersion = "1.0";
+        private byte UpdateTimer = 6;
+        private  uint TableUpdate = 100;
+
+        private string[] inforstr;
+
+
+        string StrHum;
+        string Strtemp;
+        string Strir_temp;
 
         public Form1()
         {
@@ -39,14 +48,40 @@ namespace RTCSetup
                 }
             }
             lbSystemTime.Font = new Font(pfc.Families.First(), 30, FontStyle.Regular);
-            lbRTCTime.Font = new Font(pfc.Families.First(), 30, FontStyle.Regular);
+            //lbRTCTime.Font = new Font(pfc.Families.First(), 25, FontStyle.Regular);
 
+            //label1.Font= new Font(pfc.Families.First(), 25, FontStyle.Regular);
+
+            //label2.Font= new Font(pfc.Families.First(), 25, FontStyle.Regular);
+            //label3.Font = new Font(pfc.Families.First(), 25, FontStyle.Regular);
+            //label4.Font = new Font(pfc.Families.First(), 25, FontStyle.Regular);
+            //label5.Font = new Font(pfc.Families.First(), 25, FontStyle.Regular);
             dtpCustom.Value = DateTime.Now;
-            lbRTCTime.Text = "unknown";
+            // lbRTCTime.Text = "unknown";
 
+
+
+            progressBar1.Step =100*( timer2.Interval / 1000)/60;
             addAvailableComPorts();
             updateUI();
         }
+
+        private void SetTablice()
+        {
+            dataGridView1.Rows.Add(
+                dataGridView1.Rows.Count.ToString(), 
+                DateTime.Now.ToString("yyyy.MM.dd"), 
+                DateTime.Now.ToString("HH:mm"), 
+                inforstr[0], 
+                inforstr[1], 
+                inforstr[2]);
+
+
+            dataGridView1.FirstDisplayedCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+
+
+        }
+
 
         private void addAvailableComPorts()
         {
@@ -82,7 +117,29 @@ namespace RTCSetup
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lbSystemTime.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            //lbSystemTime.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+
+            //string info = serialManager.getInfo();
+           
+            inforstr = serialManager.getInfo().Split(' ');
+
+            label3.Text = inforstr[0];
+            label4.Text = inforstr[1];
+            label5.Text = inforstr[2];
+            //progressBar1.Value = 0;
+            UpdateTimer = 6;
+
+
+            if(TableUpdate>=60)
+            {
+                SetTablice();
+                TableUpdate = 0;
+                progressBar1.Value = 0;
+            }
+            TableUpdate += 5;
+           // progressBar1.PerformStep();
+            //SetTablice();
+
 
         }
 
@@ -92,16 +149,21 @@ namespace RTCSetup
             {
                 string serialPortName = (string)cbSerialPorts.SelectedItem;
                 bool result = serialManager.connect(serialPortName);
-
+               
                 if (result) 
                 {
                     result = serialManager.handshake();
+                    
                 } 
                 else return;
 
                 if(result) 
                 {
+                    
                     connected = true;
+                    timer1.Enabled = true;
+                    timer2.Enabled = true;
+                    
                     updateUI();
                 }
                 else serialManager.disconnect();
@@ -109,6 +171,8 @@ namespace RTCSetup
 
             else
             {
+                timer1.Enabled = false;
+                timer2.Enabled = false;
                 serialManager.disconnect();
                 connected = false;
                 updateUI();
@@ -128,6 +192,15 @@ namespace RTCSetup
         private void btSetCustom_Click(object sender, EventArgs e)
         {
             serialManager.setRTCTime(dtpCustom.Value);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            //progressBar1.PerformStep();
+            UpdateTimer--;
+            label6.Text = "Обновление через: " + UpdateTimer.ToString() + " сек.";
+            progressBar1.PerformStep();
+
         }
     }
 }
