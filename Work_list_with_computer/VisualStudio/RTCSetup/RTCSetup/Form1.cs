@@ -23,6 +23,9 @@ namespace RTCSetup
         private byte UpdateTimer = 6;       // перменная для регулярного обновления данных с устройства
         private  uint TableUpdate = 100;    // переменная для регулярного добавления записей в тадлицу
         //private string FileWriteSave;       // путь к каталогу, куда регулярно надо занасить данные
+        
+        
+
 
         private string[] inforstr;
 
@@ -57,7 +60,8 @@ namespace RTCSetup
             saveFileDialog1.Filter = "CSV файл(*.csv)|*.csv;*.CSV|Все файлы(*.*)|*.*";
             //saveFileDialog1.InitialDirectory = Application.StartupPath.ToString();
 
-            progressBar1.Step =100*( timer2.Interval / 1000)/DT;
+            
+            
             addAvailableComPorts();
             updateUI();
         }
@@ -121,7 +125,7 @@ namespace RTCSetup
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка при добавлении записис в файл!");
+                MessageBox.Show("Ошибка при добавлении записис в файл в "+ DateTime.Now.ToString("HH:mm:ss").ToString()+"!");
             }
 
         }
@@ -194,6 +198,7 @@ namespace RTCSetup
         {
             if (!connected)
             {
+                System.Threading.Thread.Sleep(1500);
                 string serialPortName = (string)cbSerialPorts.SelectedItem;
                 bool result = serialManager.connect(serialPortName);
                
