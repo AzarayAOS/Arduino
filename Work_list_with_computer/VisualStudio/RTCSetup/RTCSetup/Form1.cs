@@ -186,9 +186,10 @@ namespace RTCSetup
 
         private void btConnect_Click(object sender, EventArgs e)
         {
+            System.Threading.Thread.Sleep(1500);
             if (!connected)
             {
-                System.Threading.Thread.Sleep(1500);
+                
                 string serialPortName = (string)cbSerialPorts.SelectedItem;
                 bool result = serialManager.connect(serialPortName);
                
