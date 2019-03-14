@@ -39,18 +39,6 @@ namespace RTCSetup
 
         private void Form1_Load(object sender, EventArgs e)
         {            
-            Stream fontStream = this.GetType().Assembly.GetManifestResourceStream("RTCSetup.Resources.digital-7.ttf");
-            byte[] fontdata = new byte[fontStream.Length];
-            fontStream.Read(fontdata, 0, (int)fontStream.Length);
-            fontStream.Close();
-            unsafe
-            {
-                fixed (byte* pFontData = fontdata)
-                {
-                    pfc.AddMemoryFont((System.IntPtr)pFontData, fontdata.Length);
-                }
-            }
-            lbSystemTime.Font = new Font(pfc.Families.First(), 30, FontStyle.Regular);
             
             dtpCustom.Value = DateTime.Now;
             
@@ -95,7 +83,7 @@ namespace RTCSetup
 
             try
             {
-                string FileNameData = DateTime.Now.ToString("yyyy.MM.dd") + ".csv";
+                string FileNameData = DateTime.Now.ToString("dd.MM.yyyy") + ".csv";
                 FileInfo fInfo = new FileInfo(textBox2.Text + FileNameData);
 
                 if (!fInfo.Exists)
@@ -143,7 +131,8 @@ namespace RTCSetup
             if (connected)
             {
                 btConnect.Text = "РАЗЪЕДЕНИТЬ";
-                toolStripStatusLabel1.Text = "Связано с эскизом v" + sketchVersion;
+                toolStripStatusLabel1.Text = "Эскиз программы v" + sketchVersion;
+                toolStripStatusLabel2.Text = "Эскиз программы датчиков v" + serialManager.getSketchVersion();
                 btGet.Enabled = true;
                 btSetSystem.Enabled = true;
                 btSetCustom.Enabled = true;
@@ -154,6 +143,7 @@ namespace RTCSetup
             {
                 btConnect.Text = "СОЕДЕНИТЬ";
                 toolStripStatusLabel1.Text = "Разъединенно";
+                toolStripStatusLabel2.Text = "Нет информации";
                 btGet.Enabled = false;
                 btSetSystem.Enabled = false;
                 btSetCustom.Enabled = false;
@@ -216,7 +206,8 @@ namespace RTCSetup
                     timer1.Enabled = true;
                     timer2.Enabled = true;
                     //checkBox1.Enabled = false;
-                    
+                    UpdateTimer = 6;
+                    progressBar1.Value = 0;
                     groupBox5.Enabled = false;
                     
                     updateUI();
