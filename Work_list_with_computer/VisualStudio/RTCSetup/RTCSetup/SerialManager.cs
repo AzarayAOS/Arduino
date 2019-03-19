@@ -29,7 +29,7 @@ namespace RTCSetup
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unable to open serial port: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Невозможно открыть последовательный порт: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -48,12 +48,12 @@ namespace RTCSetup
             }
             catch (Exception)
             {
-                MessageBox.Show("No data from serial port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных из последовательного порта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             
             if(response.Equals("!!")) return true;
-            MessageBox.Show("Unknown device", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Неизвестное устройство", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 
@@ -71,7 +71,7 @@ namespace RTCSetup
             }
             catch (Exception)
             {
-                MessageBox.Show("No data from serial port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных из последовательного порта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return response;
@@ -91,7 +91,7 @@ namespace RTCSetup
             }
             catch (Exception)
             {
-                MessageBox.Show("No data from serial port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных из последовательного порта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "UNKNOWN";
             }
             return response;
@@ -115,7 +115,7 @@ namespace RTCSetup
             }
             catch (Exception)
             {
-                MessageBox.Show("No data from serial port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных из последовательного порта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "UNKNOWN";
             }
 
@@ -142,16 +142,16 @@ namespace RTCSetup
             }
             catch (Exception)
             {
-                MessageBox.Show("No data from serial port", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Нет данных из последовательного порта", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (response.Equals("OK"))
             {
-                MessageBox.Show("RTC set!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("RTC установлен!", "Операция успешна", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
-            MessageBox.Show("Wrong response from RTC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Неправильный ответ от RTC", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
 

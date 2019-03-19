@@ -19,7 +19,7 @@ namespace RTCSetup
         PrivateFontCollection pfc = new PrivateFontCollection();
         private SerialManager serialManager = new SerialManager();
         private bool connected = false;
-        private string sketchVersion = "2.0";
+        private string sketchVersion = "2.02";
         private byte UpdateTimer = 6;       // перменная для регулярного обновления данных с устройства
         private  uint TableUpdate = 100;    // переменная для регулярного добавления записей в тадлицу
         //private string FileWriteSave;       // путь к каталогу, куда регулярно надо занасить данные
@@ -186,10 +186,10 @@ namespace RTCSetup
 
         private void btConnect_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(1500);
+            
             if (!connected)
             {
-                
+                System.Threading.Thread.Sleep(1500);
                 string serialPortName = (string)cbSerialPorts.SelectedItem;
                 bool result = serialManager.connect(serialPortName);
                

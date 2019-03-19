@@ -27,4 +27,3 @@ D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\De
 D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.csproj.CoreCompileInputs.cache
 D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.exe
 D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.pdb
-D:\Git\Arduino\Work_list_with_computer\VisualStudio\RTCSetup\RTCSetup\obj\x86\Debug\RTCSetup.csprojAssemblyReference.cache
