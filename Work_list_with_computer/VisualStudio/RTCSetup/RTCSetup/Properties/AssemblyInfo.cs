@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RTCSetup")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Cloud sensor")]
+[assembly: AssemblyDescription("Cloud sensor for Arduino")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ING Direct NV")]
-[assembly: AssemblyProduct("RTCSetup")]
-[assembly: AssemblyCopyright("Copyright © ING Direct NV 2013")]
+[assembly: AssemblyCompany("Space Informatics Laboratory, MIPT")]
+[assembly: AssemblyProduct("Cloud sensor")]
+[assembly: AssemblyCopyright("Space Informatics Laboratory © MIPT 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c3a58809-67ae-41ef-9c36-8805c29a4666")]
+[assembly: Guid("c3a58809-67ae-41ef-9c36-8805c29a4667")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.4.0")]
+[assembly: AssemblyFileVersion("2.0.4.0")]

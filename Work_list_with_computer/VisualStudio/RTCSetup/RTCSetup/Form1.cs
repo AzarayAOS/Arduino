@@ -19,7 +19,7 @@ namespace RTCSetup
         PrivateFontCollection pfc = new PrivateFontCollection();
         private SerialManager serialManager = new SerialManager();
         private bool connected = false;
-        private string sketchVersion = "2.02";
+        private string sketchVersion = "2.04";
         private byte UpdateTimer = 6;       // перменная для регулярного обновления данных с устройства
         private  uint TableUpdate = 100;    // переменная для регулярного добавления записей в тадлицу
         //private string FileWriteSave;       // путь к каталогу, куда регулярно надо занасить данные
@@ -319,6 +319,12 @@ namespace RTCSetup
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
                 textBox2.Text = folderBrowserDialog1.SelectedPath+"\\";
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Программа: Cloud sensor\nАвтор: Шевченко Антон\nEmail: AzarayAOS@mail.ru" +
+                "\nОрганизация: Лаборатория космической информации МФТИ\n г. Долгопрудный © 2019", "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
